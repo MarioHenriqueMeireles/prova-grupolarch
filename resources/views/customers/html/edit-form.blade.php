@@ -55,7 +55,7 @@
                                 </select>
                             </label>
                             <label for="born_in" class="px-4">Data de nascimento
-                                <input name="customer[born_in]" value="{{old('customer.born_in') ?? $customer->born_in->format('d/m/Y') }}" id='born_in' class="form-control @error('customer.born_in') is-invalid @enderror" />
+                                <input name="customer[born_in]" value="{{old('customer.born_in') ?? $customer->born_in->format('d/m/Y') }}" id='born_in' class="datepicker form-control @error('customer.born_in') is-invalid @enderror" />
                             </label>
                         </div>
 

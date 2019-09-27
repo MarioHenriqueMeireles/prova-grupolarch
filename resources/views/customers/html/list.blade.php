@@ -18,7 +18,7 @@
                         <th>Status</th>
                         <th>Telefone</th>
                         <th>Endereço</th>
-                        <th style="width: 188px; text-align: right;"><a class="btn btn-info" href="{{route('export-customers-list',['page'=>$page, 'order'=>$order === 'asc' ? 'desc' : $order])}}">Export Xls</a></th>
+                        <th style="width: 188px; text-align: right;"><a class="btn btn-info" id="export-xls"> <!-- href="{{route('export-customers-list',['page'=>$page, 'order'=> ($order === 'asc' ? 'desc' : 'asc')])}}"--> Export Xls</a></th>
                     </tr>
                 </thead>
                 <tbody>

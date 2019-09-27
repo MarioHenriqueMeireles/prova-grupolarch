@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 
 Route::get('/clientes', 'CustomerSearchesController@index')->name('list-customer'); // lista de clientes
-//Route::get('/clientes/excluidos', 'CustomerSearchesController@index')->name('customers-deleted'); // lista de clientes excluídos
+
 Route::get('/cliente/novo', 'CustomersController@create')->name('customer-create'); // novo cliente
 Route::get('/cliente/atualizar/{id}', 'CustomersController@edit')->name('edit-customer'); // editar cliente
 Route::put('/cliente/update/{id}', 'CustomersController@update')->name('update-customer'); //edita cliente
@@ -24,6 +24,14 @@ Route::get('/cliente/{id}', 'CustomerSearchesController@show')->name('show-custo
 Route::post('/cliente/novo', 'CustomersController@store')->name('store-customer'); // salva um novo cliente
 Route::get('/cliente/delete/{id}', 'CustomersController@delete')->name('delete-customer'); // deletar cliente
 Route::delete('/cliente/delete/{id}', 'CustomersController@destroy')->name('destroy-customer'); // deleta cliente
+
+Route::post('/get-token', function(Request $request){
+    $token = $request->get('_token');
+    return response()->json([
+        'token' => $token   
+    ]);
+         
+});
 
 //Auth::routes();
 
