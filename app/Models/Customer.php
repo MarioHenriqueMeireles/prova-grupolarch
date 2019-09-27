@@ -37,14 +37,14 @@ class Customer extends Model {
         $complement = $address->complement ? "{$address->complement}, " : null;
         $estado = Estados::getStateByAbbr($address->state) ?? Estados::getStateByID($address->state);
         $sigla = $estado ? $estado->abbr : '';
-        return (object)[
-            "string" => "{$address->public_place}, n° {$address->number}, {$complement}{$address->neighborhood} - {$address->city} / {$sigla}",
-            "post_code" => $address->post_code
-            ];
+        return (object) [
+                    "string" => "{$address->public_place}, n° {$address->number}, {$complement}{$address->neighborhood} - {$address->city} / {$sigla}",
+                    "post_code" => $address->post_code
+        ];
     }
 
     public function getStatusAttribute() {
-       
+
         return CustomerStatus::getByID($this->status_id);
     }
 

@@ -27,6 +27,10 @@
                 <div class="card">
                     <h4 class="card-header">
                         Novo Cliente
+                        <span style="float: right">
+                            <a href="{{route('show-customer', [$customer->id])}}" class="btn btn-sm btn-info">Abrir</a>
+                            <a href="{{route('delete-customer', [$customer->id])}}" class="btn btn-sm btn-danger" >excluir</a>
+                        </span>
                     </h4>
                     <div class="card-body">
                         <div class="form-group">

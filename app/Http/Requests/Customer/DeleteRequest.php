@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Packages\Address\Requests;
+namespace App\Http\Requests\Customer;
 
-use App\Packages\Address\Requests\Request;
+use Illuminate\Foundation\Http\FormRequest;
 
-class AddressCreateRequest extends Request
+class DeleteRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +24,7 @@ class AddressCreateRequest extends Request
     public function rules()
     {
         return [
-            //
+            'customer.id'=>"required|"
         ];
     }
 }

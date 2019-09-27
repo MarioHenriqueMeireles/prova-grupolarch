@@ -14,18 +14,36 @@ class CustomerSearchesController extends Controller {
     private $repository;
 
     function __construct(CustomerRepository $repository) {
+
         $this->repository = $repository;
     }
 
     public function index(Request $request) {
-        $data = $this->repository->customerList($request);
-       // dd($data);
-        return view('customers.html.list', $data);
+        try {
+
+            $data = $this->repository->customerList($request);
+            return view('customers.html.list', $data);
+        } catch (Exception $ex) {
+            if (!env('APP_DEBUG')) {
+                return abort(500, $ex->getMessage());
+            }
+        }
     }
 
     public function show($id) {
-        $customer = $this->repository->findById($id);
-        return view('customers.html.show', ['customer' => $customer]);
+        try {
+            $customer = $this->repository->findById($id);
+            
+            if (is_null($customer))
+                return redirect()->route('list-customer');
+            
+            $status = \App\Models\CustomerStatus::getByID($customer->status_id);
+            return view('customers.html.show', ['customer' => $customer, "status" => $status]);
+        } catch (Exception $ex) {
+            if (!env('APP_DEBUG')) {
+                return abort(500, $ex->getMessage());
+            }
+        }
     }
 
 }
