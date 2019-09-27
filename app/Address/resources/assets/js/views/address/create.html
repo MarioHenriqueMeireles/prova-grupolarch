@@ -1,0 +1,68 @@
+<form  ng-submit="save()" class="form-horizontal" name="addressForm">
+    
+    <div class="form-group" ng-class="{'has-error': !addressForm.postal_code.$valid && addressForm.postal_code.$touched}">
+        <label for="postal_code">CEP:</label>
+        <input class="form-control" ng-model="address.postal_code" required="required" name="postal_code" type="text" value="" id="postal_code">
+        <div ng-messages="addressForm.postal_code.$error" class="help-block" ng-show="addressForm.postal_code.$touched">
+            <div ng-message="required">Campo Obrigatório!</div>
+        </div>
+    </div>
+    <div class="form-group" ng-class="{'has-error': !addressForm.public_place.$valid && addressForm.public_place.$touched}">
+        <label for="public_place">Logradouro:</label>
+        <input class="form-control" 
+               ng-model="address.public_place" 
+               required="required" 
+               name="public_place" 
+               type="text" id="public_place">
+        <select name="public_place_type"></select>
+        <div ng-messages="addressForm.public_place.$error" class="help-block" ng-show="addressForm.public_place.$touched">
+            <div ng-message="required">Campo Obrigatório!</div>
+        </div>
+    </div>
+    <div class="form-group" ng-class="{'has-error': !addressForm.neighborhood.$valid && addressForm.neighborhood.$touched}">
+        <label for="neighborhood">Bairro:</label>
+        <input class="form-control" name="neighborhood" 
+               ng-model="address.neighborhood" 
+               required="required" 
+               type="text" id="neighborhood">
+        <div ng-messages="addressForm.neighborhood.$error" class="help-block" ng-show="addressForm.neighborhood.$touched">
+            <div ng-message="required">Campo Obrigatório!</div>
+        </div>
+    </div>
+    <div class="form-group" ng-class="{'has-error': !addressForm.city.$valid && addressForm.city.$touched}">
+        <label for="city">Cidade:</label>
+        <input class="form-control" name="city"  
+               ng-model="address.city" 
+               required="required" 
+               type="text"
+               id="city">
+        <div ng-messages="addressForm.city.$error" class="help-block" ng-show="addressForm.city.$touched">
+            <div ng-message="required">Campo Obrigatório!</div>
+        </div>
+    </div>
+    <div class="form-group" ng-class="{'has-error': !addressForm.state.$valid && addressForm.state.$touched}">
+        <label for="state">Estado:</label>
+        <input class="form-control" name="state" 
+               ng-model="address.state" 
+               required="required" 
+               type="text"
+               id="state">
+        <div ng-messages="addressForm.state.$error" class="help-block" ng-show="addressForm.state.$touched">
+            <div ng-message="required">Campo Obrigatório!</div>
+        </div>
+    </div>
+    <div class="form-group" ng-class="{'has-error': !addressForm.country.$valid && addressForm.country.$touched}">
+        <label for="country">País:</label>
+        <input class="form-control" name="country" 
+               ng-model="address.country" 
+               required="required" 
+               type="text"
+               id="country">
+        <div ng-messages="addressForm.country.$error" class="help-block" ng-show="addressForm.country.$touched">
+            <div ng-message="required">Campo Obrigatório!</div>
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="submit" class="btn btn-success uppercase" value="Cadastrar" /> 
+    </div>
+</form>

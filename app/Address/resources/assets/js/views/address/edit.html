@@ -1,0 +1,94 @@
+<div class="row-fluid">
+
+    <h4 > Produtos (Total: {{totalProducts}})</h4>
+    <hr/>
+
+</div>
+<div class="row-fluid">
+    <dir-pagination-controls auto-hide="false" on-page-change="pageChanged(newPageNumber)"></dir-pagination-controls>
+</div>
+
+<div class="row-fluid">
+    <div class="col col-lg-3">
+        <form novalidate class="form-inline"  >
+            <div class="form-group">
+                <label for = 'consulta'>Consulta:</label>
+                <input type="text" name='consulta' ng-model="consulta" class='form-control' ng-enter="getResultsPage(1)"/>
+                <input type='hidden' name='searchFields' value='name:like;description:like;presentation:like'/>
+            </div>
+        </form>
+    </div>
+    <div class="col col-lg-3">
+        <form novalidate class="form-inline"  >
+            <div class="form-group">
+                <label for = 'category'> Categoria:</label>
+                <select name="category" class='form-control'
+                        id="repeatSelect" 
+                        ng-model="category"
+                        ng-options="c.name for c in categories track by c.id"
+                        ng-change='getResultsPage(1)'>
+                </select>
+            </div>
+        </form>
+    </div>
+    <div class="col col-lg-2">
+        <form novalidate class="form-inline"  >
+
+            <div class="form-group">
+                <label for = 'aviable'> Disponível:</label>
+                <select name="aviable" class='form-control'
+                        id="repeatSelect" 
+                        ng-model="aviable"
+                        ng-options="a.name for a in aviableStatus track by a.id"
+                        ng-change='getResultsPage(1)'>
+                </select>
+            </div>
+        </form>
+    </div>
+
+</div>
+<div class="row-fluid">
+    <table class="table table-responsive table-hover table-bordered table-condensed">
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Nome</th>
+                <th style="width: 30%;">Descrição</th>
+                <!--th>Apresentação</th-->
+                <th>Categoria</th>
+                <th>Preço (R$)</th>
+                <th>Estoque</th>
+                <th>Disponível</th>
+                <th>Em promoção</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr  dir-paginate="product in products | itemsPerPage: productsPerPage" total-items="totalProducts" current-page="pagination.current">
+                <td>{{product.product_code}}</td>
+                <td>{{product.name}}</td>
+                <td>{{product.description}}</td>
+                <!--td>{{product.presentation}}</td-->
+                <td>{{product.category_name}}</td>
+                <td >{{(product.sale_price+"").replace('.',',')}}</td>
+                <td class="auto-numeric">{{(product.stock_quantity+"").replace('.',',')}}</td>
+                <td>{{product.aviable == 1 ? 'sim' : 'não'}}</td>
+                <td>{{(product.has_promo_in_progress ? 'sim' : 'não')}}</td>
+
+                <td style="text-align: center;">
+                    <div style="margin-bottom:5px;">
+                        <a href="{{product.id}}/show"  class="btn btn-sm btn-info" title="Ver e adicionar imagens.">Detalhes</a>
+                    </div>
+                    <!--div>
+                        <a href="{{product.id}}/edit" class="btn btn-sm btn-success" title="Modificar dados do produto.">Editar</a>
+                    </div-->
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+
+<div class="row-fluid">
+    <dir-pagination-controls auto-hide="false" on-page-change="pageChanged(newPageNumber)"></dir-pagination-controls>
+</div>
