@@ -44,12 +44,13 @@ Porém, o pdrão RESTFull não foi implementado em decorrencia do tempo.
 2. Acesse a pasta raiz e execute composer update, para instalar as dependencias;
 3. Configure as variáveis do banco de no arquivo .env
 
-DB_CONNECTION=pgsql
-DB_HOST=127.0.0.1
-DB_PORT=5432
-DB_DATABASE=laravel
-DB_USERNAME=<username>
-DB_PASSWORD=<password>
+
+DB_CONNECTION=pgsql  
+DB_HOST=127.0.0.1  
+DB_PORT=5432  
+DB_DATABASE=laravel  
+DB_USERNAME=<username>  
+DB_PASSWORD=<password>  
 
 4. Execute o comando *php artisan migrate --seed* (cria o banco de dados e popula).
 5. Execute o comando *php artisan serve* e acesse no browser o endereço: *http://localhost:8000/*
